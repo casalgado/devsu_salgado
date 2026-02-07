@@ -1,12 +1,15 @@
 import HomePage from "../pages/HomePage";
 import ProductPage from "../pages/ProductPage";
 import CartPage from "../pages/CartPage";
+import CheckoutPage from "../pages/CheckoutPage";
 
 describe("Purchase Flow - Open Cart", () => {
   let products;
   let billing;
 
   before(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
     cy.fixture("products").then((data) => {
       products = data;
     });
@@ -22,6 +25,7 @@ describe("Purchase Flow - Open Cart", () => {
       HomePage.clickProduct(product.name);
       ProductPage.addToCart();
       ProductPage.verifySuccessAlert();
+      cy.screenshot(`added-${product.name}-to-cart`);
       HomePage.visit();
     });
   });
@@ -31,6 +35,22 @@ describe("Purchase Flow - Open Cart", () => {
     products.forEach((product) => {
       CartPage.verifyProductInCart(product.name);
     });
+    cy.screenshot("cart-contents");
     CartPage.clickCheckout();
+  });
+
+  it("completes guest checkout and verifies order placement", () => {
+    CheckoutPage.visit();
+    CheckoutPage.selectGuestCheckout();
+    CheckoutPage.continueAsGuest();
+    CheckoutPage.fillBillingDetails(billing);
+    CheckoutPage.continueBilling();
+    CheckoutPage.continueDelivery();
+    CheckoutPage.agreeToTermsAndConditions();
+    CheckoutPage.continuePayment();
+    cy.screenshot("order-details");
+    CheckoutPage.confirmOrder();
+    CheckoutPage.verifyOrderPlaced();
+    cy.screenshot("order-confirmation");
   });
 });
