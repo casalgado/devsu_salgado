@@ -1,0 +1,19 @@
+{
+  "name": "e2e-opencart",
+  "version": "1.0.0",
+  "description": "E2E test automation for purchase flow in opencart.abstracta.us",
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "npx cypress open"
+  },
+  "keywords": [
+    "test",
+    "devsu",
+    "e2e",
+    "cypress"
+  ],
+  "author": "Carlos Alberto Salgado",
+  "devDependencies": {
+    "cypress": "^15.10.0"
+  }
+}
