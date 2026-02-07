@@ -4,7 +4,8 @@ module.exports = defineConfig({
   allowCypressEnv: false,
 
   e2e: {
-    baseUrl: 'http://opencart.abstracta.us/',
+    baseUrl: "http://opencart.abstracta.us/",
+    testIsolation: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
