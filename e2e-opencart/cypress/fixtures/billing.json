@@ -1,0 +1,11 @@
+{
+  "firstName": "Carlos",
+  "lastName": "Salgado",
+  "email": "carlos.salgado.test@example.com",
+  "telephone": "1234567890",
+  "address": "Calle Falsa 123",
+  "city": "Ciudad Test",
+  "postcode": "10001",
+  "country": "Colombia",
+  "region": "Atlantico"
+}
