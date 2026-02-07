@@ -18,9 +18,9 @@ describe("Purchase Flow - Open Cart", () => {
     });
   });
 
-  it("adds two products to the cart", () => {
+  it("completes a full purchase flow as a guest", () => {
+    cy.log("Step 1: Add products to cart");
     HomePage.visit();
-
     products.forEach((product) => {
       HomePage.clickProduct(product.name);
       ProductPage.addToCart();
@@ -28,18 +28,16 @@ describe("Purchase Flow - Open Cart", () => {
       cy.screenshot(`added-${product.name}-to-cart`);
       HomePage.visit();
     });
-  });
 
-  it("verifies products in cart and proceeds to checkout", () => {
+    cy.log("Step 2: Verify cart contents and proceed to checkout");
     CartPage.visit();
     products.forEach((product) => {
       CartPage.verifyProductInCart(product.name);
     });
     cy.screenshot("cart-contents");
     CartPage.clickCheckout();
-  });
 
-  it("completes guest checkout and verifies order placement", () => {
+    cy.log("Step 3: Complete checkout as guest");
     CheckoutPage.visit();
     CheckoutPage.selectGuestCheckout();
     CheckoutPage.continueAsGuest();
