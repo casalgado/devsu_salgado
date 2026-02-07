@@ -1,0 +1,30 @@
+Exercise 1: E2E Automation
+Option 3: Purchase Flow in http://opencart.abstracta.us/
+
+The challenge:
+The main challenge when completing this test was a bug in the test that presented itself in the checkout page. After clicking the "#button-account" to continue to the billing section, it threw an error that clear() was being called on 'undefined', this means that the "#input-payment-firstname" element was not being found.
+
+Considering the ui is an accordion, my first guess was that the ui was not updating fast enough. I tried adding a wait period of 2, then 5, then 10 seconds and the error was still present.
+
+Digging deeper, my next guess was that there was a delay in the ajax response from the server, so I tried intersecting and waiting for the response, but results were inconsistent, sometimes they worked and sometimes not. 
+
+So I believed there was a race condition, and tried extending the wait period with no success. At this point I discarded my initial hypothesis (that the bug was because the ui was not loading) and tried to find another cause for the bug. 
+
+I contemplated it could be a caching issue and started to see if there was success in clearing the cache. I ran the test both in headless mode and also in the cypress app. In the app I noticed a suspicious page reload during the execution. This made me check the cy.vitit() calls and I noticed an inconsistency in the checkout page. The url was an absolute url (starting with "http://...") instead of a relative url (starting with "/index..."). When the url was set to relative, to match the others, the tests ran succesfully and consistently. With the solution in place, I cleaned up unneccesary code. 
+
+Reflecting on the root cause, using an absolute url likely caused Cypress to treat this as a new page navigation, potentially clearing session state or cookies needed for the checkout flow. The relative URL maintained the same session context.
+
+Key Learnings:
+- URL navigation patterns matter. Relative vs absolute urls can affect session state and cookie persistence in ways that aren't immediately obvious.
+
+- Visual debugging (running tests in non-headless mode) can provide insights that aren't apparent from logs alone.
+
+- Understanding the testing framework's behavior is as important as understanding the application being tested.
+
+Future Improvements: 
+- Add more properties to the product objects and check that the cart renders more data points correctly. 
+
+- Add negative test cases with invalid data to verify error handling and validation messages.
+
+
+
