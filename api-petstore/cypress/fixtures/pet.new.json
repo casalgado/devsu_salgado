@@ -1,5 +1,5 @@
 {
-  "id": 0,
+  "id": 1,
   "category": {
     "id": 101,
     "name": "terriers"
@@ -9,14 +9,14 @@
     "https://upload.wikimedia.org/wikipedia/commons/d/d6/The_Wizard_of_Oz_Judy_Garland_Terry_1939.jpg"
   ],
   "tags": [
-      {
-        "id": 1,
-        "name": "famous"
-      },
-      {
-        "id": 2,
-        "name": "small"
-      }
-    ],
+    {
+      "id": 1,
+      "name": "famous"
+    },
+    {
+      "id": 2,
+      "name": "small"
+    }
+  ],
   "status": "available"
 }
