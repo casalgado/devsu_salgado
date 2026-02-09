@@ -27,4 +27,30 @@ Future Improvements:
 - Add negative test cases with invalid data to verify error handling and validation messages.
 
 
+Exercise 2: API Testing
+Option 2: Pet CRUD in https://petstore.swagger.io/
+
+The challenge:
+The main challenge encountered during this exercise was understanding how to properly chain asynchronous API requests in Cypress. Initially, when attempting to retrieve a pet by ID immediately after creation, the GET request was receiving undefined values. This occurred because I was trying to use the response data outside of the request's promise chain, before the POST request had completed.
+
+The solution was to properly chain the requests using .then() blocks, ensuring each operation completed before the next one began. This pattern became particularly important in Test 2, where I needed to chain POST → PUT → GET operations sequentially, with each step depending on data from the previous request.
+
+Additionally, I discovered unexpected behavior in the PetStore API's ID generation: when creating a pet with "id: 0", "id: null", or without the "id" property at all, the API generates an extremely long numeric ID (e.g., 9223372036854776000) that subsequently fails on GET requests, returning a 404 or error response. To ensure test reliability, I implemented a workaround by generating random IDs in a valid range (Math.floor(Math.random() * 10000)) rather than relying on the API's auto-generation.
+
+Key Learnings: 
+- This was my first experience using Cypress for API testing rather than UI automation, and it proved to be an excellent tool in this context. I really enjoyed working with it. 
+
+- Proper promise chaining is important when working with dependent API calls. Each request must complete and its response data must be available before dependent operations execute.
+
+- The cy.request() command handles many HTTP concerns automatically (headers, status codes, JSON parsing) which streamlines the test writing process compared to raw HTTP libraries.
+
+- Using dynamic test data (random IDs, fixture files) helps ensure test independence and reduces conflicts when running tests against shared environments.
+
+
+Future Improvements: 
+- Implement negative test cases to verify error handling: invalid pet IDs, malformed payloads, missing required fields, unauthorized operations.
+
+- Add validation for edge cases: pets with minimal data, very long names, special characters in string fields, boundary values for numeric fields.
+
+- Create reusable custom commands (e.g., cy.createPet(), cy.deletePet()) to reduce code duplication across tests.
 
