@@ -69,7 +69,6 @@ Test the API endpoints for CRUD operations for pets.
 - Update the pet's name and it's status to 'sold'
 - Get by status and find the modified pet.
 
-
 What the test does:
 Tests Create, Read and Update operations on https://petstore.swagger.io.
 1. Creates a pet using test data from fixtures and a test id, then retrieves the pet using the test id.
@@ -83,6 +82,5 @@ cypress/
 cypress.config.js       - Cypress configuration
 
 Documentation: 
-
 For detailed test documentation, inputs, outputs and variables, read the document at: api-petstore/api-test-documentation.md
 
