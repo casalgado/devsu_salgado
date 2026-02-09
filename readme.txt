@@ -1,11 +1,13 @@
-Exercise 1: E2E Automation
-Option 3: Purchase Flow in http://opencart.abstracta.us/
+Automated Testing Exercises - E2E & API
 
-Objective:
-- Add two products to the cart
-- Visualize the Cart
-- Complete Checkout process as a guest: "Guest Checkout"
-- Finalize the purchase until reaching confirmation: "Your order has been placed!"
+This repository contains two automation exercises:
+- Exercise 1: E2E Testing at /e2e-opencart
+- Exercise 2: API Testing at /api-petstore
+
+Each exercise is in its own folder with independent setup.
+
+Exercise 1: E2E Testing Automation
+Option 3: Purchase Flow in http://opencart.abstracta.us/
 
 Prerequisites:
 - Node.js v16 or higher
@@ -19,6 +21,12 @@ Installation:
 Running the Tests:
 - Headless mode: npm test
 - Interactive mode (Cypress UI): npm run cypress:open
+
+Objective:
+- Add two products to the cart
+- Visualize the Cart
+- Complete Checkout process as a guest: "Guest Checkout"
+- Finalize the purchase until reaching confirmation: "Your order has been placed!"
 
 What the test does:
 Automates a complete purchase flow on http://opencart.abstracta.us/:
@@ -38,16 +46,8 @@ cypress/
 cypress.config.js       - Cypress configuration
 
 
-Exercise 2: API test
+Exercise 2: API Testing
 Option 2: Pet CRUD in petstore.swagger.io
-
-
-Objective:
-Test the API endpoints for CRUD operations for pets. 
-- Create a new pet
-- Retrieve the pet by id
-- Update the pet's name and it's status to 'sold'
-- Get by status and find the modified pet.
 
 Prerequisites:
 - Node.js v16 or higher
@@ -61,6 +61,14 @@ Installation:
 Running the Tests:
 - Headless mode: npm test
 - Interactive mode (Cypress UI): npm run cypress:open
+
+Objective:
+Test the API endpoints for CRUD operations for pets. 
+- Create a new pet
+- Retrieve the pet by id
+- Update the pet's name and it's status to 'sold'
+- Get by status and find the modified pet.
+
 
 What the test does:
 Tests Create, Read and Update operations on https://petstore.swagger.io.
