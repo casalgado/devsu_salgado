@@ -1,0 +1,20 @@
+{
+  "name": "api-petstore",
+  "version": "1.0.0",
+  "description": "API testing for petstore at petstore.swagger.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "npx cypress open"
+  },
+  "keywords": [
+    "test",
+    "devsu",
+    "api",
+    "cypress"
+  ],
+  "author": "Carlos Alberto Salgado",
+  "devDependencies": {
+    "cypress": "^15.10.0"
+  }
+}

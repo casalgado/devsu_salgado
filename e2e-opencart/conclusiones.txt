@@ -14,6 +14,7 @@ I contemplated it could be a caching issue and started to see if there was succe
 
 Reflecting on the root cause, using an absolute url likely caused Cypress to treat this as a new page navigation, potentially clearing session state or cookies needed for the checkout flow. The relative URL maintained the same session context.
 
+
 Key Learnings:
 - URL navigation patterns matter. Relative vs absolute urls can affect session state and cookie persistence in ways that aren't immediately obvious.
 
@@ -21,10 +22,9 @@ Key Learnings:
 
 - Understanding the testing framework's behavior is as important as understanding the application being tested.
 
+
 Future Improvements: 
 - Add more properties to the product objects and check that the cart renders more data points correctly. 
 
 - Add negative test cases with invalid data to verify error handling and validation messages.
-
-
 
